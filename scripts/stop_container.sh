@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
 
-# Stop the running container (if any)
-echo "Hi"
+CONTAINER_NAME=rajeshk23-simple-python-flask-app
+
+if docker ps -q --filter "name=$CONTAINER_NAME" | grep -q .; then
+  docker stop $CONTAINER_NAME
+  docker rm $CONTAINER_NAME
+fi
